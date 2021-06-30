@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
           children: [
             Expanded(
               child: Container(
-                color: Colors.black,
+                color: Color(0xff121212),
               ),
             ),
             Expanded(
