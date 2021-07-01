@@ -1,14 +1,21 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(
     MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: MyApp(),
     ),
   );
 }
 
+String typedvalue = '';
+String emailid = '';
+String password = '';
+
+// ignore: must_be_immutable
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -32,7 +39,7 @@ class MyApp extends StatelessWidget {
                   child: Column(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(top: 10),
+                        padding: const EdgeInsets.only(top: 15),
                         child: Text(
                           'Login',
                           textAlign: TextAlign.center,
@@ -46,20 +53,29 @@ class MyApp extends StatelessWidget {
                       TextBox(
                         hinttext: 'enter your mail-ID',
                         labeltext: 'Email',
+                        obscure: false,
+                        ispass: false,
+                        kbtype: TextInputType.emailAddress,
                       ),
                       TextBox(
                         hinttext: 'enter your password',
                         labeltext: 'Password',
+                        obscure: true,
+                        ispass: true,
+                        kbtype: TextInputType.visiblePassword,
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 30),
                         child: MaterialButton(
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20)),
-                          onPressed: () {},
+                          onPressed: () {
+                            print(emailid);
+                            print(password);
+                          },
                           color: Colors.black,
                           elevation: 5,
-                          minWidth: 250,
+                          minWidth: 350,
                           height: 50,
                           child: Text(
                             'Login',
@@ -86,7 +102,29 @@ class MyApp extends StatelessWidget {
                       //     ),
                       //   ),
                       // ),
-                      //Text('asdasd'),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 80),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'Dont have an account ?',
+                              style: GoogleFonts.kanit(
+                                  textStyle: TextStyle(fontSize: 17)),
+                            ),
+                            InkWell(
+                              onTap: () {},
+                              child: Text(
+                                ' Sign Up',
+                                style: GoogleFonts.kanit(
+                                    textStyle: TextStyle(
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.w600)),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -94,7 +132,8 @@ class MyApp extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Color(0xffFAFAFA),
                   borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(60.0),
+                    topLeft: Radius.circular(30.0),
+                    //topRight: Radius.circular(30.0),
                   ),
                 ),
               ),
@@ -107,16 +146,28 @@ class MyApp extends StatelessWidget {
 }
 
 class TextBox extends StatelessWidget {
-  TextBox({required this.hinttext, required this.labeltext});
+  TextBox(
+      {required this.hinttext,
+      required this.labeltext,
+      required this.obscure,
+      required this.kbtype,
+      required this.ispass});
   final String hinttext;
   final String labeltext;
+  final bool obscure;
+  final TextInputType kbtype;
+  final bool ispass;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(left: 30, right: 30, top: 30),
       child: TextField(
-        autofocus: true,
-        //onChanged: (val) {},
+        keyboardType: kbtype,
+        obscureText: obscure,
+        //autofocus: true,
+        onChanged: (val) {
+          ispass ? password = val : emailid = val;
+        },
         decoration: InputDecoration(
           hintText: hinttext,
           hintStyle: GoogleFonts.kanit(
