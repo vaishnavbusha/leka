@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:leka/login.dart';
+import 'package:leka/mainscreen.dart';
 import 'package:leka/registration.dart';
 import 'package:sizer/sizer.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -17,6 +21,7 @@ class MyApp extends StatelessWidget {
         routes: {
           Loginpage.id: (context) => Loginpage(),
           Registrationpage.id: (context) => Registrationpage(),
+          MainScreen.id: (context) => MainScreen(),
         },
         home: Loginpage(),
       );

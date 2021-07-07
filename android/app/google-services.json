@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "569743276096",
+    "project_id": "leka-cad64",
+    "storage_bucket": "leka-cad64.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:569743276096:android:69973743b713ff6b69c7a5",
+        "android_client_info": {
+          "package_name": "com.aquelastudios.leka"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "569743276096-9hmcrpmcb1l4bbnssso2u9gphvifme3p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDg_XraNifLgWRDH9oq1MG30Rg1yhAd-xc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "569743276096-9hmcrpmcb1l4bbnssso2u9gphvifme3p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

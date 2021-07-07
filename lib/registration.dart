@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:leka/constants.dart';
 import 'package:leka/login.dart';
+import 'package:leka/mainscreen.dart';
 import 'package:sizer/sizer.dart';
 
 class Registrationpage extends StatefulWidget {
@@ -11,23 +13,21 @@ class Registrationpage extends StatefulWidget {
 }
 
 class _RegistrationpageState extends State<Registrationpage> {
+  final _auth = FirebaseAuth.instance;
   late String name;
   late String email;
   late String password;
   late String cpassword;
   bool isvisiblep = true;
   bool isvisiblecp = true;
-  //GlobalKey<FormState> formkey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
-        //resizeToAvoidBottomInset: true,
         backgroundColor: Color(0xff222831),
         body: Column(
-          //shrinkWrap: true,
           children: [
             Expanded(
               child: Container(
@@ -70,14 +70,6 @@ class _RegistrationpageState extends State<Registrationpage> {
                       Container(
                         padding: EdgeInsets.only(left: 10),
                         decoration: BoxDecoration(
-                            // boxShadow: [
-                            //   BoxShadow(
-                            //     color: Colors.black,
-                            //     blurRadius: 2,
-                            //     spreadRadius: -17,
-                            //     offset: Offset(-15, 15),
-                            //   )
-                            // ],
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10)),
                         width: 88.w,
@@ -85,7 +77,6 @@ class _RegistrationpageState extends State<Registrationpage> {
                           style: GoogleFonts.kanit(
                               textStyle: TextStyle(color: Colors.black54)),
                           keyboardType: TextInputType.emailAddress,
-                          //autofocus: true,
                           onChanged: (val) {
                             name = val;
                           },
@@ -98,12 +89,7 @@ class _RegistrationpageState extends State<Registrationpage> {
                               labelStyle: GoogleFonts.kanit(
                                 textStyle: ktextfieldslabeltextstyle,
                               ),
-                              border: InputBorder.none
-                              // border: OutlineInputBorder(
-                              //   borderSide: BorderSide(color: Colors.black),
-                              //   borderRadius: BorderRadius.circular(10),
-                              // ),
-                              ),
+                              border: InputBorder.none),
                         ),
                       ),
                       SizedBox(
@@ -112,14 +98,6 @@ class _RegistrationpageState extends State<Registrationpage> {
                       Container(
                         padding: EdgeInsets.only(left: 10),
                         decoration: BoxDecoration(
-                            // boxShadow: [
-                            //   BoxShadow(
-                            //     color: Colors.black,
-                            //     blurRadius: 2,
-                            //     spreadRadius: -17,
-                            //     offset: Offset(-15, 15),
-                            //   )
-                            // ],
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10)),
                         width: 88.w,
@@ -127,8 +105,7 @@ class _RegistrationpageState extends State<Registrationpage> {
                           style: GoogleFonts.kanit(
                               textStyle: TextStyle(color: Colors.black54)),
                           keyboardType: TextInputType.visiblePassword,
-                          obscureText: true,
-                          //autofocus: true,
+                          obscureText: false,
                           onChanged: (val) {
                             email = val;
                           },
@@ -142,10 +119,6 @@ class _RegistrationpageState extends State<Registrationpage> {
                               textStyle: ktextfieldslabeltextstyle,
                             ),
                             border: InputBorder.none,
-                            // border: OutlineInputBorder(
-                            //   borderSide: BorderSide(color: Colors.black),
-                            //   borderRadius: BorderRadius.circular(10),
-                            // ),
                           ),
                         ),
                       ),
@@ -155,14 +128,6 @@ class _RegistrationpageState extends State<Registrationpage> {
                       Container(
                         padding: EdgeInsets.only(left: 10),
                         decoration: BoxDecoration(
-                            // boxShadow: [
-                            //   BoxShadow(
-                            //     color: Colors.black,
-                            //     blurRadius: 2,
-                            //     spreadRadius: -17,
-                            //     offset: Offset(-15, 15),
-                            //   )
-                            // ],
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10)),
                         width: 88.w,
@@ -171,7 +136,6 @@ class _RegistrationpageState extends State<Registrationpage> {
                               textStyle: TextStyle(color: Colors.black54)),
                           keyboardType: TextInputType.visiblePassword,
                           obscureText: isvisiblep,
-                          //autofocus: true,
                           onChanged: (val) {
                             password = val;
                           },
@@ -195,10 +159,6 @@ class _RegistrationpageState extends State<Registrationpage> {
                               textStyle: ktextfieldslabeltextstyle,
                             ),
                             border: InputBorder.none,
-                            // border: OutlineInputBorder(
-                            //   borderSide: BorderSide(color: Colors.black),
-                            //   borderRadius: BorderRadius.circular(10),
-                            // ),
                           ),
                         ),
                       ),
@@ -208,14 +168,6 @@ class _RegistrationpageState extends State<Registrationpage> {
                       Container(
                         padding: EdgeInsets.only(left: 10),
                         decoration: BoxDecoration(
-                            // boxShadow: [
-                            //   BoxShadow(
-                            //     color: Colors.black,
-                            //     blurRadius: 2,
-                            //     spreadRadius: -17,
-                            //     offset: Offset(-15, 15),
-                            //   )
-                            // ],
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10)),
                         width: 88.w,
@@ -224,7 +176,6 @@ class _RegistrationpageState extends State<Registrationpage> {
                               textStyle: TextStyle(color: Colors.black54)),
                           keyboardType: TextInputType.visiblePassword,
                           obscureText: isvisiblecp,
-                          //autofocus: true,
                           onChanged: (val) {
                             cpassword = val;
                           },
@@ -248,10 +199,6 @@ class _RegistrationpageState extends State<Registrationpage> {
                               textStyle: ktextfieldslabeltextstyle,
                             ),
                             border: InputBorder.none,
-                            // border: OutlineInputBorder(
-                            //   borderSide: BorderSide(color: Colors.black),
-                            //   borderRadius: BorderRadius.circular(10),
-                            // ),
                           ),
                         ),
                       ),
@@ -261,9 +208,21 @@ class _RegistrationpageState extends State<Registrationpage> {
                       MaterialButton(
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15)),
-                        onPressed: () {
-                          // print(email);
-                          // print(password);
+                        onPressed: () async {
+                          try {
+                            final newuser =
+                                await _auth.createUserWithEmailAndPassword(
+                                    email: email, password: cpassword);
+                            if (newuser != null) {
+                              Navigator.pushNamed(context, MainScreen.id);
+                            }
+                            print(newuser);
+                            // setState(() {
+                            //   showspinner = false;
+                            // });
+                          } catch (e) {
+                            print(e);
+                          }
                         },
                         color: Colors.black,
                         elevation: 5,
@@ -276,23 +235,6 @@ class _RegistrationpageState extends State<Registrationpage> {
                               fontSize: 19),
                         ),
                       ),
-                      // Padding(
-                      //   padding: const EdgeInsets.all(30.0),
-                      //   child: RaisedButton(
-
-                      //     elevation: 4,
-                      //     onPressed: () {},
-                      //     color: Colors.black,
-                      //     child: Text(
-                      //       'Login',
-                      //       style: GoogleFonts.kanit(
-                      //           textStyle: TextStyle(color: Colors.white)),
-                      //     ),
-                      //     shape: RoundedRectangleBorder(
-                      //       borderRadius: BorderRadius.circular(10),
-                      //     ),
-                      //   ),
-                      // ),
                       SizedBox(
                         height: 5.h,
                       ),
@@ -324,10 +266,8 @@ class _RegistrationpageState extends State<Registrationpage> {
                 width: double.infinity,
                 decoration: BoxDecoration(
                   color: Color(0xffF6F6F6),
-                  //color: Colors.red,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(35.0),
-                    //topRight: Radius.circular(30.0),
                   ),
                 ),
               ),
